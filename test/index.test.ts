@@ -34,6 +34,6 @@ describe('test', () => {
     const results1 = await engine.run({ firstName: 'bill' });
     expect(results1.events).toHaveLength(0);
     const results2 = await engine.run({ firstName: 'Jill' });
-    expect(results2.events).toEqual([{ type: 'test' }]);
+    expect(results2.events).toEqual([{ type: 'first_name_starts_with_j' }]);
   });
 });
