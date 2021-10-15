@@ -12,6 +12,13 @@
   "files": [
     "build"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akmjenkins/json-rules-engine-schema-operator"
+  },
+  "bugs": {
+    "url": "https://github.com/akmjenkins/json-rules-engine-schema-operator"
+  },
   "scripts": {
     "dist": "yarn lint && yarn test && yarn build",
     "clean": "rimraf build",

@@ -27,7 +27,7 @@ describe('test', () => {
         ],
       },
       event: {
-        type: 'test',
+        type: 'first_name_starts_with_j',
       },
     });
 
