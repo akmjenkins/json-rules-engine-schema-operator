@@ -30,11 +30,11 @@ import Ajv from 'ajv';
 import { Engine } from 'json-rules-engine';
 import createSchemaOperator from 'json-rules-engine-schema-operator';
 
-
-const operator = createSchemaOperator((subject,schema) => ajv.compile(schema)(subject);
+const ajv = new Ajv();
+const validator = (subject,schema) => ajv.validate(schema,subject);
 
 const engine = new Engine();
-engine.addOperator(operator);
+engine.addOperator(createSchemaOperator(validator));
 ```
 
 and now you can do this:
@@ -46,6 +46,33 @@ engine.addRule({
       {
         fact: 'firstName',
         operator: 'schema',
+        value: {
+          type: 'string',
+          pattern: '^J',
+        },
+      },
+    ],
+  },
+  event: {
+    type: 'j_firstName',
+  },
+});
+```
+
+## Custom Operator Name
+
+By default, the name of the operator added to the engine is `schema`. This is configurable by passing in a custom name via the second optional parameter `options`:
+
+```js
+const name = 'jsonSchemaOperator';
+engine.addOperator(validator, { name });
+
+engine.addRule({
+  conditions: {
+    any: [
+      {
+        fact: 'firstName',
+        operator: name,
         value: {
           type: 'string',
           pattern: '^J',

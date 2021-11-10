@@ -1,6 +1,13 @@
 import { Operator } from 'json-rules-engine';
 
-export default (schemaEvaluator: (subject: any, schema: any) => boolean) =>
-  new Operator('schema', (value: any, compare: any) =>
+type Options = {
+  name?: string;
+};
+
+export default (
+  schemaEvaluator: (subject: any, schema: any) => boolean,
+  options?: Options,
+) =>
+  new Operator(options?.name ?? 'schema', (value: any, compare: any) =>
     schemaEvaluator(value, compare),
   );
