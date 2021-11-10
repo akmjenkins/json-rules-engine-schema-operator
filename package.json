@@ -1,6 +1,6 @@
 {
   "name": "json-rules-engine-schema-operator",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "An operator for json-rules-engine to evaluate a value against a JSON schema",
   "main": "build/index.js",
   "author": "Adam Jenkins",
